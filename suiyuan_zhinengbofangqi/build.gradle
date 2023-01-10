@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        repositories {
+            flatDir {
+                dirs 'libs'
+            }
+        }
+        ndk {
+            // add support lib
+            //abiFilters 'armeabi-v7a' //, 'arm64-v8a'//, "mips"  //,'armeabi''x86',, 'x86_64',
+        }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation files('libs\\ijkplayer-java-0.8.8.jar')
+    implementation files('libs\\sy_touping.jar')
+    implementation files('libs\\lib_screen.jar')
+    implementation files('libs\\anrwatchdog-1.4.0.jar')
+
+    implementation files('libs\\rtmp-client-3.1.0.jar')
+    implementation files('libs\\checker-qual-1.8.6.jar')
+    implementation files('libs\\exoplayer-2.9.1.jar')
+
+    //此为公共依赖 注意不要修改compileOnly修饰否则多项目容易导致依赖冲突
+    //注意AS默认是v7包,在打包过程不会自动导v7或v4 , 需要将jar放入libs目录下
+    //公共依赖目录 ../libs 请勿更改.
+    //项目依赖请自行放入项目下libs
+    //此为公共依赖
+    compileOnly files('../libs/E4ARuntime.jar')
+//    compileOnly files('../libs/SuiyuanUtil-release.jar')
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.victor:lib:1.0.4'
+	//glide-3.7.0.jar 如果需要图片加载框架,请统一使用此版本
+    implementation 'com.squareup.okhttp3:okhttp:3.3.1'
+    implementation project(':sy_http')
+
+//    implementation "com.google.android.exoplayer:exoplayer-hls:2.9.1"
+}

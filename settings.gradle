@@ -1,0 +1,4 @@
+rootProject.name = "SuiyuanBofang"
+include ':app'
+include ':suiyuan_zhinengbofangqi'
+include ':sy_http'

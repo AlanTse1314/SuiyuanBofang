@@ -1,0 +1,37 @@
+<resources>
+
+    <!--请不要再此文件内添加代码,打包时会跳过,因为这是E4A自带的!,  如需要添加请另外创建文件-->
+    
+    <style name="WhiteBaseTheme" parent="android:Theme.Light">
+
+    </style>
+
+    <style name="BlackBaseTheme" parent="android:Theme.Light">
+
+    </style>
+
+    <style name="WhiteTheme" parent="WhiteBaseTheme">
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="BlackTheme" parent="BlackBaseTheme">
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="ClassicTheme">
+
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="StartTheme">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">false</item>
+    </style>
+</resources>
