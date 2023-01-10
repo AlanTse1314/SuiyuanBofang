@@ -2,40 +2,45 @@ package com.e4a.runtime.components.impl.android.随缘_智能播放器类库;
 
 
 import android.view.View;
-import android.widget.ImageView;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.e4a.runtime.android.mainActivity;
 import com.e4a.runtime.components.ComponentContainer;
 import com.e4a.runtime.components.impl.android.ViewComponent;
-import com.e4a.runtime.components.impl.android.n4.图片框Impl;
+import com.sy.play.SYDataSource;
+import com.sy.play.SYMediaExo;
+import com.sy.play.SYplayStd;
 
 //作者:874334395
 public class 随缘_智能播放器Impl extends ViewComponent implements 随缘_智能播放器 {
     private ComponentContainer container;
+    private SYplayStd sYplayStd;
 
     public 随缘_智能播放器Impl(ComponentContainer container) {
         super(container);
         this.container = container;
     }
 
+
+    //E4A  初始化View
     @Override
     protected View createView() {
-         //注意:请尽量不要再类中使用系统相关类.取资源索引()!容易导致R资源智能检测失效!
-         //当然你也可以使用, 如果使用系统相关类.取资源索引() 则内置R资源检测失效
-        try {
-            //直接使用E4A 的可视控件,如果你想使用E4A控件的事件,那么你必须继承控件
-            图片框Impl imageView = new 图片框Impl(container);
-        } catch (Exception e) {
-            System.out.println("不是E4A可视控件");
-        }
+        LinearLayout linearLayout = new LinearLayout(mainActivity.getContext());
+        sYplayStd = new SYplayStd(mainActivity.getContext());
+        linearLayout.addView(sYplayStd, new ViewGroup.LayoutParams(-1, -1));
+        return linearLayout;
 
-        ImageView imageView = new ImageView(mainActivity.getContext());
-        //imageView.setBackgroundResource(R.drawable.a);
-        return imageView;
+        //设置视频 并播放
+       //     sYplayStd.setUp(new SYDataSource("https://cctvwbndtxy.liveplay.myqcloud.com/cctvwbnd/jzcctv1_2/index.m3u8", "框架测试",
+       //                true, null, false,false,0), SYMediaExo.class);
+       //     sYplayStd.startVideo();
+        //设置视频嗅探地址并解析播放
+        //sYplayStd.setUp(new SYDataSource("https://www.bilibili.com/video/BV1GY4y177r9?spm_id_from=333.851.b_7265636f6d6d656e64.2", "框架测试",
+        //       true, null, false,true,8), SYMediaExo.class);
+        //sYplayStd.startVideo();
+
     }
 
-    @Override
-    public void 设置图片(int 资源id) {
-        getView().setBackgroundResource(资源id);
-    }
+
 }

@@ -165,7 +165,7 @@ public class SYMediaExo extends SYMediaInterface implements Player.EventListener
         if (simpleExoPlayer != null) {
             simpleExoPlayer.setPlayWhenReady(false);
 
-            super.pause();
+
         }
     }
 
